@@ -44,7 +44,7 @@ namespace MurderMystery.Controllers
                 dal.AddSuspect(suspect);
                 return Redirect("Index");
             }
-            return View("Index", suspect );
+            return View("SuspectForm", suspect );
         }
 
         public IActionResult Privacy()
