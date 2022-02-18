@@ -1,0 +1,13 @@
+﻿@model MurderSuspect
+
+@if(Model == null)
+ {
+    <h1>No suspects in list</h1>
+ }
+ else
+ {
+    <div>
+        <h3>@Model.Name</h3>
+        <h5>@Model.Description</h5>
+    </div>
+ }
