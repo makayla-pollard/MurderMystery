@@ -1,4 +1,4 @@
-﻿@model MurderSuspect
+@model MurderSuspect
 
 @if(Model == null)
  {
@@ -9,5 +9,5 @@
     <div>
         <h3>@Model.Name</h3>
         <h5>@Model.Description</h5>
+        <a asp-controller="Home" asp-action="DeleteSuspect" asp-route-id="@Model.ID">Delete</a>
     </div>
- }
