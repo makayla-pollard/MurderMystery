@@ -1,4 +1,4 @@
-﻿using MurderMystery.Interfaces;
+using MurderMystery.Interfaces;
 using MurderMystery.Models;
 using System;
 using System.Collections.Generic;
@@ -29,6 +29,15 @@ namespace MurderMystery.Data
             murderSuspects.Add(suspect);
         }
 
+        public void DeleteSuspect(int? id)
+        {
+            var foundSuspect = GetSuspect(id);
+            if(foundSuspect != null)
+            {
+                murderSuspects.Remove(foundSuspect);
+            }
+        }
+
         public MurderSuspect GetSuspect(int? id)
         {
             MurderSuspect foundSuspect = null;
@@ -48,7 +57,7 @@ namespace MurderMystery.Data
 
         public IEnumerable<MurderSuspect> GetSuspects()
         {
-            return murderSuspects;
+            return murderSuspects.ToList();
         }
     }
 }
