@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,5 +11,6 @@ namespace MurderMystery.Interfaces
         IEnumerable<MurderSuspect> GetSuspects();
         void AddSuspect(MurderSuspect suspect);
         MurderSuspect GetSuspect(int? id);
+        void DeleteSuspect(int? id);
     }
 }
