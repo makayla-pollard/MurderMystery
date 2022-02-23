@@ -1,0 +1,13 @@
+@model MurderSuspect
+@{ }
+
+
+<form asp-controller="Home" asp-action="Index" method="post">
+    <input asp-for="Name" placeholder="Name"/>
+    <input asp-for="Description" placeholder="Description"/>
+    <input asp-for="ClueOne" placeholder="Clue 1"/>
+    <input asp-for="ClueTwo" placeholder="Clue 2"/>
+    <input asp-for="ClueThree" placeholder="Clue 3"/>
+    <input asp-for="WinningMessage" placeholder="Winning Message"/>
+    <button type="submit">Add Suspect</button>
+</form>
