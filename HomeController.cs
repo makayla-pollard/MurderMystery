@@ -26,7 +26,7 @@ namespace MurderMystery.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View("Index", dal.GetSuspects());
         }
 
 
@@ -45,6 +45,12 @@ namespace MurderMystery.Controllers
                 return Redirect("Index");
             }
             return View("SuspectForm", suspect );
+        }
+
+        public IActionResult DeleteSuspect(int? id)
+        {
+            dal.DeleteSuspect(id);
+            return View("Index", dal.GetSuspects());
         }
 
         public IActionResult Privacy()
