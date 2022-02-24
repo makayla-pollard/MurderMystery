@@ -12,5 +12,10 @@ namespace MurderMystery.Interfaces
         void AddSuspect(MurderSuspect suspect);
         MurderSuspect GetSuspect(int? id);
         void DeleteSuspect(int? id);
+        MurderSuspect GetRandomFromList();
+        string GetClueOne(MurderSuspect suspect);
+        string GetClueTwo(MurderSuspect suspect);
+        string GetClueThree(MurderSuspect suspect);
+
     }
 }
