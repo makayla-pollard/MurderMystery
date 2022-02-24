@@ -38,6 +38,31 @@ namespace MurderMystery.Data
             }
         }
 
+        public string GetClueOne(MurderSuspect suspect)
+        {
+            string clueOne = suspect.ClueOne;
+            return clueOne;
+        }
+
+        public string GetClueThree(MurderSuspect suspect)
+        {
+            string clueTwo = suspect.ClueTwo;
+            return clueTwo;
+        }
+
+        public string GetClueTwo(MurderSuspect suspect)
+        {
+            string clueThree = suspect.ClueThree;
+            return clueThree;
+        }
+
+        public MurderSuspect GetRandomFromList()
+        {
+            var random = new Random();
+            int n = random.Next(murderSuspects.Count);
+            return murderSuspects[n];
+        }
+
         public MurderSuspect GetSuspect(int? id)
         {
             MurderSuspect foundSuspect = null;
