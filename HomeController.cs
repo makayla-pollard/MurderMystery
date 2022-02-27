@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MurderMystery.Controllers
 {
-    
+    [Authorize]
     public class HomeController : Controller
     {
 
