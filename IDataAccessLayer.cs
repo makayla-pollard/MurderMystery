@@ -16,6 +16,7 @@ namespace MurderMystery.Interfaces
         string GetClueOne(MurderSuspect suspect);
         string GetClueTwo(MurderSuspect suspect);
         string GetClueThree(MurderSuspect suspect);
+        string CheckSuspect(MurderSuspect suspect, string guess);
 
     }
 }
