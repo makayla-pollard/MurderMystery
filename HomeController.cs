@@ -17,9 +17,10 @@ namespace MurderMystery.Controllers
     {
 
         IDataAccessLayer dal = new SuspectListDAL();
+        static MurderSuspect suspect;
 
-        
-        
+
+
 
         private readonly ILogger<HomeController> _logger;
 
@@ -28,9 +29,13 @@ namespace MurderMystery.Controllers
             _logger = logger;
         }
 
-        
+        [HttpGet]
         public IActionResult Index()
         {
+            suspect = dal.GetRandomFromList();
+            ViewBag.ClueOne = dal.GetClueOne(suspect);
+            ViewBag.ClueTwo = dal.GetClueTwo(suspect);
+            ViewBag.ClueThree = dal.GetClueThree(suspect);
 
             return View("Index", dal.GetSuspects());
         }
@@ -46,19 +51,18 @@ namespace MurderMystery.Controllers
 
         
         [HttpPost]
-        //NOT WORKING BECAUSE IT'S STUPID
-        public IActionResult Index(MurderSuspect suspect)
+      
+        public IActionResult Index(string guess)
         {
-            //random = dal.GetRandomFromList();
-            //ViewBag.Random = random;
+            
 
-            suspect = dal.GetRandomFromList();
+            
             ViewBag.ClueOne = dal.GetClueOne(suspect);
             ViewBag.ClueTwo = dal.GetClueTwo(suspect);
             ViewBag.ClueThree = dal.GetClueThree(suspect);
 
             
-            var guess = HttpContext.Request.Form["Check"];
+            
             ViewBag.Check = dal.CheckSuspect(suspect, guess);
             
             
@@ -75,22 +79,7 @@ namespace MurderMystery.Controllers
             return View("SuspectForm", suspect );
         }
 
-        
 
-        //public IActionResult GamePlay()
-        //{
-            
-        //    dal.SetMurderer(dal.GetRandomFromList());
-        //    var murderer = dal.GetMuderer();
-        //    ViewBag.ClueOne = dal.GetClueOne(murderer);
-        //    ViewBag.ClueTwo = dal.GetClueTwo(murderer);
-        //    ViewBag.ClueThree = dal.GetClueThree(murderer);
-        //    var guess = dal.GetMuderer().Guess;
-        //    ViewBag.Check = dal.CheckSuspect(murderer, guess);
-        //    return View("Index", dal.GetSuspects());
-        //}
-        
-        
         public IActionResult DeleteSuspect(int? id)
         {
             dal.DeleteSuspect(id);
