@@ -37,6 +37,19 @@ namespace MurderMystery.Data
                 murderSuspects.Remove(foundSuspect);
             }
         }
+        
+        public string CheckSuspect(MurderSuspect suspect, string guess)
+        {
+          
+            if(guess == suspect.Name)
+            {
+                return suspect.WinningMessage;
+            }
+            else
+            {
+                return "OH NO!! You let the killer escape!!! The real killer is " + suspect.Name + "!"; 
+            }
+        }
 
         public string GetClueOne(MurderSuspect suspect)
         {
