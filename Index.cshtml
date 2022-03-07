@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MurderSuspect>
+@model IEnumerable<MurderSuspect>
 
 
 
@@ -9,6 +9,25 @@
 }
 else
 {
+    
+<div>
+    <div id="description">
+        The Victim has mysteriously died and the police suspect it may have been a murder. Everyone gathered at the police station as suspects. The detectives gather the clues and try to figure out who did it. Use the clues and descriptions of each suspect to figure out who the murderer is and put their name in the blank.
+    </div>
+    <br/>
+    <br/>
+    <form asp-controller="Home" asp-action="Index">
+        <div>Clue One: @ViewBag.ClueOne</div>
+        <div>Clue Two: @ViewBag.ClueTwo</div>
+        <div>Clue Three: @ViewBag.ClueThree</div>
+        <input type="text" name="guess" placeholder="Full Name" />
+        <input type="submit" value="Check" />
+    </form>
+    <a asp-area="" asp-controller="Home" asp-action="Index">Reset</a>
+    <div>@ViewBag.Check</div>
+</div>
+    <br/>
+    <br/>
     <div><a asp-controller="Home" asp-action="AddSuspect">Add Suspect</a></div>
     <div class="row">
         @foreach (MurderSuspect suspect in Model)
