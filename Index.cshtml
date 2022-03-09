@@ -2,37 +2,41 @@
 
 
 
+
 @if (Model == null)
 {
-                <h1>There are no suspects</h1>
-                <div><a asp-controller="Home" asp-action="AddSuspect">Add Suspect</a></div>
+    <h1>There are no suspects</h1>
+    <div><a asp-controller="Home" asp-action="AddSuspect">Add Suspect</a></div>
 }
 else
 {
-    
-<div>
-    <div id="description">
-        The Victim has mysteriously died and the police suspect it may have been a murder. Everyone gathered at the police station as suspects. The detectives gather the clues and try to figure out who did it. Use the clues and descriptions of each suspect to figure out who the murderer is and put their name in the blank.
+
+    <div>
+        <div id="description" style=" color: #7b4f30">
+            The Victim has mysteriously died and the police suspect it may have been a murder. Everyone gathered at the police station as suspects. The detectives gather the clues and try to figure out who did it. Use the clues and descriptions of each suspect to figure out who the murderer is and put their name in the blank.
+        </div>
+        <br />
+        <br />
+        <form asp-controller="Home" asp-action="Index" style="color: #7b4f30; background-color: white; border: solid 3px #7b4f30; padding: 15px 15px 15px 15px; text-align:center;">
+            <strong>Clue One:</strong><div>@ViewBag.ClueOne</div>
+            <strong>Clue Two:</strong><div> @ViewBag.ClueTwo</div>
+            <strong>Clue Three:</strong><div> @ViewBag.ClueThree</div>
+            <input type="text" name="guess" placeholder="Full Name" />
+            <input type="submit" value="Check" />
+        </form>
+        <br/>
+        <a asp-area="" asp-controller="Home" asp-action="Index" 
+           style="border: solid; border-top: 2px solid; border-bottom: 2px solid; padding: 2px; margin: 2px;">Reset</a>
+        <strong style="color:red;">@ViewBag.Check</strong>
     </div>
-    <br/>
-    <br/>
-    <form asp-controller="Home" asp-action="Index">
-        <div>Clue One: @ViewBag.ClueOne</div>
-        <div>Clue Two: @ViewBag.ClueTwo</div>
-        <div>Clue Three: @ViewBag.ClueThree</div>
-        <input type="text" name="guess" placeholder="Full Name" />
-        <input type="submit" value="Check" />
-    </form>
-    <a asp-area="" asp-controller="Home" asp-action="Index">Reset</a>
-    <div>@ViewBag.Check</div>
-</div>
-    <br/>
-    <br/>
+    <br />
+    <br />
     <div><a asp-controller="Home" asp-action="AddSuspect">Add Suspect</a></div>
     <div class="row">
         @foreach (MurderSuspect suspect in Model)
-                {
-                    <partial name="_SuspectPartialView.cshtml" model="@suspect"/>
-                }
+        {
+            <partial name="_SuspectPartialView.cshtml" model="@suspect" />
+        }
     </div>
 }
+
